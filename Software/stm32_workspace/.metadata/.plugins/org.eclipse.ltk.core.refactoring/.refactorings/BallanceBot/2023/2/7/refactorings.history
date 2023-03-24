@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;BallanceBot/Core/Inc/Motor.h&apos; to &apos;motor.h&apos;" description="Rename resource &apos;Motor.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/Motor.h" name="motor.h" stamp="1676567349415" updateReferences="true"/>
+</session>

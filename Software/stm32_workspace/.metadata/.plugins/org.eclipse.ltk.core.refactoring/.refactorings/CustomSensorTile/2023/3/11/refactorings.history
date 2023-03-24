@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CustomSensorTile/Drivers/Dynamixel&apos; to &apos;dynamixel_sdk&apos;" description="Rename resource &apos;Dynamixel&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Drivers/Dynamixel" name="dynamixel_sdk" stamp="1678617729411" updateReferences="true"/>
+</session>

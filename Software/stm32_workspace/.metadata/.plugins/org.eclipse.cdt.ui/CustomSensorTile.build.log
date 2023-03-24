@@ -1,0 +1,17 @@
+21:25:14 **** Incremental Build of configuration Debug for project CustomSensorTile ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/dynamixel.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../Drivers/dynamixel_sdk/include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/dynamixel.d" -MT"Core/Src/dynamixel.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/dynamixel.o"
+arm-none-eabi-gcc -o "CustomSensorTile.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Plutonium\MyProjects\BallanceBot\stm32_workspace\CustomSensorTile\STM32L476JGYXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="CustomSensorTile.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CustomSensorTile.elf
+ 
+arm-none-eabi-size   CustomSensorTile.elf 
+arm-none-eabi-objdump -h -S  CustomSensorTile.elf  > "CustomSensorTile.list"
+   text	   data	    bss	    dec	    hex	filename
+  22796	     24	   1736	  24556	   5fec	CustomSensorTile.elf
+Finished building: default.size.stdout
+ 
+Finished building: CustomSensorTile.list
+ 
+
+21:25:14 Build Finished. 0 errors, 0 warnings. (took 733ms)
+

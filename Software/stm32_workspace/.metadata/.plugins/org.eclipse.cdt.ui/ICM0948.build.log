@@ -1,0 +1,104 @@
+15:52:45 **** Incremental Build of configuration Debug for project ICM0948 ****
+make -j16 all 
+arm-none-eabi-gcc "../Invn/VSensor/VSensor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/VSensor/VSensor.d" -MT"Invn/VSensor/VSensor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/VSensor/VSensor.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/DataConverter.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/DataConverter.d" -MT"Invn/EmbUtils/DataConverter.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/DataConverter.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/ErrorHelper.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/ErrorHelper.d" -MT"Invn/EmbUtils/ErrorHelper.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/ErrorHelper.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/InvList.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/InvList.d" -MT"Invn/EmbUtils/InvList.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/InvList.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/InvQueue.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/InvQueue.d" -MT"Invn/EmbUtils/InvQueue.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/InvQueue.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/Logger.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/Logger.d" -MT"Invn/EmbUtils/Logger.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/Logger.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/Message.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/Message.d" -MT"Invn/EmbUtils/Message.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/Message.o"
+arm-none-eabi-gcc "../Invn/EmbUtils/RingByteBuffer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/EmbUtils/RingByteBuffer.d" -MT"Invn/EmbUtils/RingByteBuffer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/EmbUtils/RingByteBuffer.o"
+arm-none-eabi-gcc "../Invn/DynamicProtocol/DynProtocol.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/DynamicProtocol/DynProtocol.d" -MT"Invn/DynamicProtocol/DynProtocol.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/DynamicProtocol/DynProtocol.o"
+arm-none-eabi-gcc "../Invn/DynamicProtocol/DynProtocolTransportUart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/DynamicProtocol/DynProtocolTransportUart.d" -MT"Invn/DynamicProtocol/DynProtocolTransportUart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/DynamicProtocol/DynProtocolTransportUart.o"
+arm-none-eabi-gcc "../Invn/Devices/Drivers/Icm20948/Icm20948Augmented.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/Devices/Drivers/Icm20948/Icm20948Augmented.d" -MT"Invn/Devices/Drivers/Icm20948/Icm20948Augmented.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/Devices/Drivers/Icm20948/Icm20948Augmented.o"
+arm-none-eabi-gcc "../Invn/Devices/Drivers/Icm20948/Icm20948AuxCompassAkm.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/Devices/Drivers/Icm20948/Icm20948AuxCompassAkm.d" -MT"Invn/Devices/Drivers/Icm20948/Icm20948AuxCompassAkm.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/Devices/Drivers/Icm20948/Icm20948AuxCompassAkm.o"
+In file included from ../Invn/EmbUtils/DataConverter.c:24:
+../Invn/EmbUtils/DataConverter.h:33:10: fatal error: Invn/InvExport.h: No such file or directory
+   33 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../Invn/VSensor/VSensor.c:24:
+../Invn/VSensor/VSensor.h:48:10: fatal error: Invn/EmbUtils/InvList.h: No such file or directory
+   48 | #include "Invn/EmbUtils/InvList.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+arm-none-eabi-gcc "../Invn/Devices/Drivers/Icm20948/Icm20948AuxTransport.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/Devices/Drivers/Icm20948/Icm20948AuxTransport.d" -MT"Invn/Devices/Drivers/Icm20948/Icm20948AuxTransport.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/Devices/Drivers/Icm20948/Icm20948AuxTransport.o"
+In file included from ../Invn/EmbUtils/ErrorHelper.c:24:
+../Invn/EmbUtils/ErrorHelper.h:33:10: fatal error: Invn/InvExport.h: No such file or directory
+   33 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+arm-none-eabi-gcc "../Invn/Devices/Drivers/Icm20948/Icm20948DataBaseControl.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Invn -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Invn/Devices/Drivers/Icm20948/Icm20948DataBaseControl.d" -MT"Invn/Devices/Drivers/Icm20948/Icm20948DataBaseControl.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Invn/Devices/Drivers/Icm20948/Icm20948DataBaseControl.o"
+make: *** [Invn/VSensor/subdir.mk:19: Invn/VSensor/VSensor.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/DataConverter.o] Error 1
+In file included from ../Invn/EmbUtils/InvList.c:13:
+../Invn/EmbUtils/InvList.h:27:10: fatal error: Invn/InvBool.h: No such file or directory
+   27 | #include "Invn/InvBool.h"
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../Invn/EmbUtils/InvQueue.c:4:
+../Invn/EmbUtils/InvQueue.h:91:10: fatal error: Invn/InvBool.h: No such file or directory
+   91 | #include "Invn/InvBool.h"
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/ErrorHelper.o] Error 1
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/InvQueue.o] Error 1
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/InvList.o] Error 1
+In file included from ../Invn/EmbUtils/Message.c:24:
+../Invn/EmbUtils/Message.h:43:10: fatal error: Invn/InvExport.h: No such file or directory
+   43 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../Invn/EmbUtils/RingByteBuffer.c:13:
+../Invn/EmbUtils/RingByteBuffer.h:24:10: fatal error: Invn/InvBool.h: No such file or directory
+   24 | #include "Invn/InvBool.h"
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../Invn/DynamicProtocol/DynProtocol.c:24:
+../Invn/DynamicProtocol/DynProtocol.h:28:10: fatal error: Invn/VSensor/VSensorConfig.h: No such file or directory
+   28 | #include "Invn/VSensor/VSensorConfig.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/Message.o] Error 1
+In file included from ../Invn/Devices/Drivers/Icm20948/Icm20948Augmented.c:13:
+../Invn/Devices/Drivers/Icm20948/Icm20948.h:33:10: fatal error: Invn/InvExport.h: No such file or directory
+   33 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+../Invn/DynamicProtocol/DynProtocolTransportUart.c:26:10: fatal error: Invn/EmbUtils/Message.h: No such file or directory
+   26 | #include "Invn/EmbUtils/Message.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/RingByteBuffer.o] Error 1
+make: *** [Invn/DynamicProtocol/subdir.mk:22: Invn/DynamicProtocol/DynProtocol.o] Error 1
+In file included from ../Invn/Devices/Drivers/Icm20948/Icm20948AuxCompassAkm.c:13:
+../Invn/Devices/Drivers/Icm20948/Icm20948.h:33:10: fatal error: Invn/InvExport.h: No such file or directory
+   33 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../Invn/EmbUtils/Logger.c:16:
+../Invn/EmbUtils/RingByteBuffer.h:24:10: fatal error: Invn/InvBool.h: No such file or directory
+   24 | #include "Invn/InvBool.h"
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Invn/DynamicProtocol/subdir.mk:22: Invn/DynamicProtocol/DynProtocolTransportUart.o] Error 1
+make: *** [Invn/Devices/Drivers/Icm20948/subdir.mk:52: Invn/Devices/Drivers/Icm20948/Icm20948Augmented.o] Error 1
+In file included from ../Invn/Devices/Drivers/Icm20948/Icm20948AuxTransport.c:13:
+../Invn/Devices/Drivers/Icm20948/Icm20948.h:33:10: fatal error: Invn/InvExport.h: No such file or directory
+   33 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Invn/EmbUtils/subdir.mk:58: Invn/EmbUtils/Logger.o] Error 1
+make: *** [Invn/Devices/Drivers/Icm20948/subdir.mk:52: Invn/Devices/Drivers/Icm20948/Icm20948AuxCompassAkm.o] Error 1
+In file included from ../Invn/Devices/Drivers/Icm20948/Icm20948DataBaseControl.c:13:
+../Invn/Devices/Drivers/Icm20948/Icm20948.h:33:10: fatal error: Invn/InvExport.h: No such file or directory
+   33 | #include "Invn/InvExport.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Invn/Devices/Drivers/Icm20948/subdir.mk:52: Invn/Devices/Drivers/Icm20948/Icm20948AuxTransport.o] Error 1
+make: *** [Invn/Devices/Drivers/Icm20948/subdir.mk:52: Invn/Devices/Drivers/Icm20948/Icm20948DataBaseControl.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+15:52:45 Build Failed. 29 errors, 0 warnings. (took 420ms)
+
