@@ -29,6 +29,7 @@
 import numpy as np
 import os
 import torch
+import time
 
 from isaacgym import gymtorch
 from isaacgym import gymapi
@@ -142,6 +143,10 @@ class BB(VecTask):
         self.initial_root_states = self.root_states.clone()
         self.initial_root_states[:] = to_torch(self.base_init_state, device=self.device, requires_grad=False)
         self.gravity_vec = to_torch(get_axis_params(-1., self.up_axis_idx), device=self.device).repeat((self.num_envs, 1))
+        # Fixing the gravity vector .... 
+        base_quat = self.initial_root_states[:, 3:7]
+        self.gravity_vec = quat_rotate(base_quat, self.gravity_vec)
+    
         self.actions = torch.zeros(self.num_envs, self.num_actions, dtype=torch.float, device=self.device, requires_grad=False)
 
         self.reset_idx(torch.arange(self.num_envs, device=self.device))
@@ -180,7 +185,7 @@ class BB(VecTask):
         asset_options.linear_damping = 0.0
         asset_options.armature = 0.0
         asset_options.thickness = 0.01
-        asset_options.disable_gravity = True
+        asset_options.disable_gravity = False
 
         anymal_asset = self.gym.load_asset(self.sim, asset_root, asset_file, asset_options)
         self.num_dof = self.gym.get_asset_dof_count(anymal_asset)
@@ -213,8 +218,8 @@ class BB(VecTask):
 
     def pre_physics_step(self, actions):
         self.actions = actions.clone().to(self.device)
-        # targets = self.action_scale * self.actions
-        targets = self.action_scale * torch.ones_like(self.actions)
+        targets = self.action_scale * self.actions
+        # targets = torch.zeros_like(self.actions)
         self.gym.set_dof_velocity_target_tensor(self.sim, gymtorch.unwrap_tensor(targets))
 
     def post_physics_step(self):
@@ -228,15 +233,15 @@ class BB(VecTask):
         self.compute_reward(self.actions)
 
         
-        print('Root States : \n\r')
-        print(self.root_states[0,...])
-        print('Dof States : \n\r')
-        print(self.dof_state[0,...])
-        print('Contact Forces : \n\r')
-        print(self.contact_forces[0,...])
-        print('Torques : \n\r')
-        print(self.torques[0,...])
-        print('~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        # print('Root States : \n\r')
+        # print(self.root_states[0,...])
+        # print('Dof States : \n\r')
+        # print(self.dof_state[0,...])
+        # print('Contact Forces : \n\r')
+        # print(self.contact_forces[0,...])
+        # print('Torques : \n\r')
+        # print(self.torques[0,...])
+        # print('~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
     def compute_reward(self, actions):
         self.rew_buf[:], self.reset_buf[:] = compute_anymal_reward(
@@ -331,13 +336,14 @@ def compute_anymal_reward(
     base_ang_vel = quat_rotate_inverse(base_quat, root_states[:, 10:13])
     projected_gravity = quat_rotate(base_quat, gravity_vec)
    
-    total_reward = projected_gravity[:,1]
+    total_reward = projected_gravity[:,2]
     total_reward = torch.clip(total_reward, 0., None)
     # reset agents
     # reset = torch.norm(contact_forces[:, base_index, :], dim=1) > 1.
+    reset = torch.where(projected_gravity[:,2]<0.2, 1, 0)
     time_out = episode_lengths >= max_episode_length - 1  # no terminal reward for time-outs
-    # reset = reset | time_out
-    reset = time_out
+    reset = reset | time_out
+
 
     return total_reward.detach(), reset
 
@@ -360,17 +366,18 @@ def compute_anymal_observations(root_states,
     base_lin_vel = quat_rotate_inverse(base_quat, root_states[:, 7:10]) * lin_vel_scale
     base_ang_vel = quat_rotate_inverse(base_quat, root_states[:, 10:13]) * ang_vel_scale
     projected_gravity = quat_rotate(base_quat, gravity_vec)
-    
+
     # commands_scaled = commands*torch.tensor([lin_vel_scale, lin_vel_scale, ang_vel_scale], requires_grad=False, device=commands.device)
 
-    print('gravity vector')
-    print(gravity_vec[0,...])
-    print('base_quat')
-    print(base_quat[0,...])
-    print('projected gravity env 0')
-    print(projected_gravity[0,...])
-    obs = torch.cat((torch.unsqueeze(base_ang_vel[:,1], dim=1),
-                     projected_gravity
+    # print('gravity vector')
+    # print(gravity_vec[0,...])
+    # print('base_quat')
+    # print(base_quat[0,...])
+    # print('projected gravity env 0')
+    # print(projected_gravity[0,...])
+    # print('....................................')
+    obs = torch.cat((base_ang_vel,
+                     torch.unsqueeze(projected_gravity[:,2], dim=1)
                      ), dim=-1)
     # obs = torch.zeros(root_states.shape[0], 2)
 

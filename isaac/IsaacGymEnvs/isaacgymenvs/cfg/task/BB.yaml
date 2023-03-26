@@ -5,7 +5,7 @@ physics_engine: ${..physics_engine}
 
 env:
   numEnvs: ${resolve_default:4096,${...num_envs}}
-  envSpacing: 4.  # [m]
+  envSpacing: 0.25  # [m]
 
   clipObservations: 5.0
   clipActions: 1.0
@@ -18,8 +18,9 @@ env:
   baseInitState:
     pos: [0.0, 0.0, 0.03] # x,y,z [m]
     rot: [0.7071068, 0.0, 0.0, 0.7071068] # x,y,z,w [quat]
+    # rot: [0.0, 0.0, 0.0, 1.0] # x,y,z,w [quat]
     vLinear: [0.0, 0.0, 0.0]  # x,y,z [m/s]
-    vAngular: [0.0, 0.0, 0.0]  # x,y,z [rad/s]
+    vAngular: [0.0, 1.0, 0.0]  # x,y,z [rad/s]
 
   randomCommandVelocityRanges:
     linear_x: [-2., 2.] # min max [m/s]
