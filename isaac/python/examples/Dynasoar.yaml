@@ -1,0 +1,211 @@
+# used to create the object
+name: Dynasoar
+
+physics_engine: ${..physics_engine}
+
+env:
+  numEnvs: ${resolve_default:32768,${...num_envs}}
+  envSpacing: 1.  # [m]
+
+  clipObservations: 5.0
+  clipActions: 1.0
+
+  debug_flags:
+    plots_enable: True
+    logging: True
+    log_name: "StaticTesting"
+    log_envs: [0]
+    pos_xy_hold: False
+    pos_z_hold: False
+    cam_follow: False
+    cam_target: 0
+    joystick: True
+    control_en: False
+    print: False
+
+  plane:
+    staticFriction: 1.0  # [-]
+    dynamicFriction: 1.0  # [-]
+    restitution: 0.        # [-]
+
+  glider:
+    mass: 1.0
+    ixx: 0.1913
+    iyy: 0.1020
+    izz: 0.2905
+    ixz: 0.0071
+    Cd0: 0.0
+    front_area: 2.25e-2
+    wings: 4
+    station_pts: 20
+    eps: 0.001
+    cla: 8.0
+    rho: 1.0
+    wind_speed: 1
+    wind_thickness: 10.0
+    thrust_force: 0.0
+    brake_force: 0.0
+  
+    offsets:
+      W1: [0.020, -0.75, 0.0]
+      W2: [0.020, 0.75, 0.0]
+      W3: [0.6, -0.1, 0.1] 
+      W4: [0.6, 0.1, 0.1] 
+    # semi_span: [5.0, 5.0, 2.5, 2.5]
+    headings:
+      W1: [0.0, 1.0]
+      W2: [0.0, 1.0]
+      W3: [-45.0, -1.5]
+      W4: [45.0, -1.5]
+
+    chords: #Left to Right in wing space
+      W1: [0.25, 0.3]
+      W2: [0.3, 0.25]
+      W3: [0.05, 0.05]
+      W4: [0.05, 0.05]
+
+  randomRanges:
+    roll: [-90.0, 90.0]
+    pitch: [-25.0, 25.0]
+    yaw: [-180.0, 180.0]
+    vinf: [10.0, 20.0]
+    height: [0.1, 20.0]
+    target_range: [-1000.0, 1000.0]
+    target_radius: 50
+
+  baseInitState:
+    pos: [0.0, 0.0, 0.0] # x,y,z [m]
+    rot: [0.0, 0.0, 0.0, 1.0] # x,y,z,w [quat]
+    vLinear: [0.0, 0.0, 0.0]  # x,y,z [m/s]
+    vAngular: [0.0, 0.0, 0.0]  # x,y,z [rad/s]
+
+  obs_scales:
+    height: 0.01
+    air_speed: 0.01
+    ground_speed: 0.01
+
+
+  control:
+    actionScale_main: 0.174533 #10   Deg Max Angle of Attack
+    actionScale_tail: 0.174533
+    controlFrequencyInv: 4 # 
+
+  urdfAsset:
+    collapseFixedJoints: True
+    fixBaseLink: False
+
+  learn:
+    # rewards
+    linearVelocityXYRewardScale: 1.0
+    angularVelocityZRewardScale: 0.5
+    torqueRewardScale: -0.000025 
+
+    # normalization
+    linearVelocityScale: 2.0
+    angularVelocityScale: 0.25
+    dofPositionScale: 1.0
+    dofVelocityScale: 0.05
+
+    # episode length in seconds
+    episodeLength_s: 120
+
+  # viewer cam:
+  viewer:
+    refEnv: 0
+    # pos: [0, 0, 4]  # [m]
+    pos: [3, -12., 2]  # [m]
+    lookat: [0., 0., 0.]  # [m]
+
+  # set to True if you use camera sensors in the environment
+  enableCameraSensors: False
+
+sim:
+  dt: 0.01
+  substeps: 2
+  up_axis: "z"
+  use_gpu_pipeline: ${eq:${...pipeline},"gpu"}
+  gravity: [0.0, 0.0, -9.81]
+  physx:
+    num_threads: ${....num_threads}
+    solver_type: ${....solver_type}
+    use_gpu: ${contains:"cuda",${....sim_device}} # set to False to run on CPU
+    num_position_iterations: 4
+    num_velocity_iterations: 1
+    contact_offset: 0.02
+    rest_offset: 0.0
+    bounce_threshold_velocity: 0.2
+    max_depenetration_velocity: 100.0
+    default_buffer_size_multiplier: 5.0
+    max_gpu_contact_pairs: 8388608 # 8*1024*1024
+    num_subscenes: ${....num_subscenes}
+    contact_collection: 1 # 0: CC_NEVER (don't collect contact info), 1: CC_LAST_SUBSTEP (collect only contacts on last substep), 2: CC_ALL_SUBSTEPS (default - all contacts)
+
+task:
+  randomize: False
+  randomization_params:
+    frequency: 600   # Define how many environment steps between generating new randomizations
+    observations:
+      range: [0, .002] # range for the white noise
+      operation: "additive"
+      distribution: "gaussian"
+    actions:
+      range: [0., .02]
+      operation: "additive"
+      distribution: "gaussian"
+    sim_params: 
+      gravity:
+        range: [0, 0.4]
+        operation: "additive"
+        distribution: "gaussian"
+        schedule: "linear"  # "linear" will linearly interpolate between no rand and max rand
+        schedule_steps: 3000
+    actor_params:
+      anymal:
+        color: True
+        rigid_body_properties:
+          mass: 
+            range: [0.5, 1.5]
+            operation: "scaling"
+            distribution: "uniform"
+            setup_only: True # Property will only be randomized once before simulation is started. See Domain Randomization Documentation for more info.
+            schedule: "linear"  # "linear" will linearly interpolate between no rand and max rand
+            schedule_steps: 3000
+        rigid_shape_properties:
+          friction:
+            num_buckets: 500
+            range: [0.7, 1.3]
+            operation: "scaling"
+            distribution: "uniform"
+            schedule: "linear"  # "linear" will scale the current random sample by `min(current num steps, schedule_steps) / schedule_steps`
+            schedule_steps: 3000
+          restitution:
+            range: [0., 0.7]
+            operation: "scaling"
+            distribution: "uniform"
+            schedule: "linear"  # "linear" will scale the current random sample by `min(current num steps, schedule_steps) / schedule_steps`
+            schedule_steps: 3000
+        dof_properties:
+          damping: 
+            range: [0.5, 1.5]
+            operation: "scaling"
+            distribution: "uniform"
+            schedule: "linear"  # "linear" will scale the current random sample by `min(current num steps, schedule_steps) / schedule_steps`
+            schedule_steps: 3000
+          stiffness: 
+            range: [0.5, 1.5]
+            operation: "scaling"
+            distribution: "uniform"
+            schedule: "linear"  # "linear" will scale the current random sample by `min(current num steps, schedule_steps) / schedule_steps`
+            schedule_steps: 3000
+          lower:
+            range: [0, 0.01]
+            operation: "additive"
+            distribution: "gaussian"
+            schedule: "linear"  # "linear" will scale the current random sample by `min(current num steps, schedule_steps) / schedule_steps`
+            schedule_steps: 3000
+          upper:
+            range: [0, 0.01]
+            operation: "additive"
+            distribution: "gaussian"
+            schedule: "linear"  # "linear" will scale the current random sample by `min(current num steps, schedule_steps) / schedule_steps`
+            schedule_steps: 3000
